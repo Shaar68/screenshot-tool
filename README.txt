@@ -4,7 +4,7 @@ A little bash script to capture and upload screenshots.
 
 This script is very simple to use.
 I use it with a keybinding in Gnome so that I can just press "Print Screen" on my keyboard and it will run.
-I use the following command for the Gnome keybind: sh -c "/home/aetea/.scripts/screenshot.sh aupc"
+I use the following command for the Gnome keybind: bash /home/aetea/.scripts/screenshot.sh aupc
 It captures an area with the pointer included in the image and uploads it to my server. 
 
 You can put all of your settings in a file named "settings.sh" (without quotes) next to the script.
