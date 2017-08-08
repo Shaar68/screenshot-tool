@@ -24,7 +24,7 @@ For uploading functionality you need to set the following environment variables 
 Dependencies:
   gnome-screenshot
   sshpass (Only if you upload with password)
-  xclip
+  xclip (Only if you enable the function for adding the link to your clipboard)
 
 Command Usage (Same as running the script with "help" (without quotes) as the only parameter):
   usage: screenshot.sh [options] [args...]
