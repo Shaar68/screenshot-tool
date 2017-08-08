@@ -4,3 +4,4 @@ export UPLOAD_USER=upload-images
 export UPLOAD_PASS=testytest123
 export UPLOAD_PATH=/var/www
 export UPLOAD_URL=https://img.example.com/
+exprot UPLOAD_KEY=$HOME/upload-images-ssh-key

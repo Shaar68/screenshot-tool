@@ -20,6 +20,7 @@ if [[ "$1" == "help" ]]; then
 	echo "d <seconds>: delay for the specified amount of time before taking picture"
 	echo "p: include the pointer"
 	echo "b: include window border"
+    echo "c: copy the link to the uploaded image to the clipboard"
 	exit 0
 fi
 
@@ -53,12 +54,19 @@ fi
 
 gnome-screenshot $ARGS
 
+if [ -z ${UPLOAD_PASS+x} ]; then
+    SFTP_COMMAND="sftp -i $UPLOAD_KEY"
+else
+    SFTP_COMMAND="sshpass -p $UPLOAD_PASS sftp"
+fi
+
 if [[ "$1" == *"u"* ]]; then
-sshpass -p $UPLOAD_PASS sftp -oStrictHostKeyChecking=no -oBatchMode=no -b - $UPLOAD_USER@$UPLOAD_HOST << !
+$SFTP_COMMAND -oStrictHostKeyChecking=no -oBatchMode=no -b - $UPLOAD_USER@$UPLOAD_HOST << !
 	cd $UPLOAD_PATH
 	put $FILENAME
 	bye
 !
-
-	echo "$UPLOAD_URL$(basename $FILENAME)" | xclip -selection clipboard
+    if [[ "$1" == *"c"* ]]; then
+	    echo "$UPLOAD_URL$(basename $FILENAME)" | xclip -selection clipboard
+    fi
 fi
