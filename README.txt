@@ -17,7 +17,7 @@ For uploading functionality you need to set the following environment variables 
   UPLOAD_HOST: The host of the SSH server. (example: vps.example.com)
   UPLOAD_USER: The SSH user for uploading. (example: upload-images)
   UPLOAD_PASS: The SSH user's password. (if this is not set the script will try to use a SSH key from $UPLOAD_KEY)
-  UPLOAD_KEY: The SSH user's SSH key.
+  UPLOAD_KEY: The SSH user's SSH key. (if this is also not set the script will try to use the default ssh key from the keyring)
   UPLOAD_PATH: The path on the server where the file should be uploaded. (example: /var/www)
   UPLOAD_URL: The URL-prefix to the images. (example: https://img.example.com/ would produce something like https://img.example.com/screenshot-2017-01-02_03-04-05.png)
 

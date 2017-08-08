@@ -54,10 +54,12 @@ fi
 
 gnome-screenshot $ARGS
 
-if [ -z ${UPLOAD_PASS+x} ]; then
+if ! [ -z ${UPLOAD_PASS+x} ]; then
+    SFTP_COMMAND="sshpass -p $UPLOAD_PASS sftp"
+elif ! [ -z ${UPLOAD_KEY+x} ]; then
     SFTP_COMMAND="sftp -i $UPLOAD_KEY"
 else
-    SFTP_COMMAND="sshpass -p $UPLOAD_PASS sftp"
+    SFTP_COMMAND="sftp"
 fi
 
 if [[ "$1" == *"u"* ]]; then
